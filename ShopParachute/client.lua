@@ -79,9 +79,9 @@ Citizen.CreateThread(function()
 
    ------------ Texte du menu en bas -------------
    
-   Citizen.CreateThread(function()
+       Citizen.CreateThread(function()
        while true do
-           Citizen.Wait(0)
+           local sleep = 250
    
            for k in pairs(position) do
    
@@ -89,6 +89,7 @@ Citizen.CreateThread(function()
                local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
    
                if dist <= 1.0 then
+                sleep = 0
                 RageUI.Text({
                     message = "Appuyez sur [~r~E~w~] pour parler au ~r~Vendeur",
                     time_display = 1
@@ -100,7 +101,35 @@ Citizen.CreateThread(function()
                    end   
                end
            end
+           Citizen.Wait(sleep)
        end
    end)
+
+--------- Si ca ne fonction pas remplacer le code du haut par lui du bas ----------
+
+
+  -- Citizen.CreateThread(function()
+       --while true do
+           --Citizen.Wait(0)
+   
+           --for k in pairs(position) do
+   
+              -- local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+              -- local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+   
+               --if dist <= 1.0 then
+                --RageUI.Text({
+                    --message = "Appuyez sur [~r~E~w~] pour parler au ~r~Vendeur",
+                   -- time_display = 1
+               -- })
+
+                --ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour obtenir un ~b~parachute") --ne pas toucher a ca ATTENTION
+                   --if IsControlJustPressed(1,51) then
+                       --RageUI.Visible(RMenu:Get('parachute', 'main'), not RageUI.Visible(RMenu:Get('parachute', 'main')))
+                   --end   
+               --end
+          -- end
+      -- end
+  -- end)
 
 
